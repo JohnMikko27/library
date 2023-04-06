@@ -3,6 +3,7 @@ const body = document.querySelector('body');
 const addBookButton = document.querySelector('.add');
 const submit = document.querySelector('.submit')
 const form = document.querySelector('form');
+const cards = document.querySelector('.cards');
 
 let myLibrary = [];
 
@@ -14,10 +15,15 @@ submit.addEventListener('click', (e) => {
     e.preventDefault();
 
     let title = document.querySelector('#title').value;
-    let author = document.getElementsByName('#author').value;
-    let pages = document.getElementsByName('#pages').value;
-    let read = document.getElementsByName('#read').value;
-    console.log(title);
+    let author = document.querySelector('#author').value;
+    let pages = document.querySelector('#pages').value;
+    let read = document.querySelector('#read').value;
+    
+    let newBook = new Book(title, author, pages, read);
+    addBookToLibrary(newBook);
+    cards.textContent = ' ';
+    display();
+    
     form.classList.toggle('hidden');
 })
 
@@ -59,7 +65,8 @@ function display() {
         card.appendChild(pages);
         card.appendChild(read);
 
-        body.appendChild(card);
+        cards.appendChild(card);
+        body.appendChild(cards);
     }
 }
 
