@@ -16,7 +16,12 @@ submit.addEventListener('click', (e) => {
     let title = document.querySelector('#title').value;
     let author = document.querySelector('#author').value;
     let pages = document.querySelector('#pages').value;
-    let read = document.querySelector('#read').value;
+    let read = document.querySelector('#read');
+    if (read.checked) {
+        read = 'Read';
+    } else {
+        read = "Not yet"
+    }
     
     let newBook = new Book(title, author, pages, read);
     addBookToLibrary(newBook);
@@ -41,9 +46,9 @@ function addBookToLibrary(Book) {
     myLibrary.push(Book);
 }
 
-let book1 = new Book("1", "2", "3", "4");
-let book2 = new Book("asdf", "adsf", "asfd", "asfd");
-let book3 = new Book('3', '3', '3', '3');
+let book1 = new Book("1", "2", "3", "Not Yet");
+let book2 = new Book("asdf", "adsf", "asfd", "Read");
+let book3 = new Book('3', '3', '3', 'Read');
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
@@ -55,23 +60,45 @@ function display() {
         let title = document.createElement('div');
         let author = document.createElement('div');
         let pages = document.createElement('div');
-        let read = document.createElement('div');
+        let readed = document.createElement('button');
         let button = document.createElement('button');
         
         title.textContent = myLibrary[i].title;
         author.textContent = myLibrary[i].author;
         pages.textContent = myLibrary[i].pages;
-        read.textContent = myLibrary[i].read;
+        readed.textContent = myLibrary[i].read;
         button.textContent = 'X';
+
+
+        if (myLibrary[i].read == 'Read') {
+            readed.classList.add('green');
+        } else {
+            readed.classList.add('red');
+        }
 
         // to be able to select it in css
         card.classList.add('card');
         button.classList.add('remove');
         button.dataset.number = i;
-        
+        readed.dataset.number = i;
+
+        // reattaches eventListener after calling display() multiple times
+        // fixes issue of button only working once
+        readed.addEventListener('click', (e) => {
+            if (e.target.textContent == 'Read') {
+                myLibrary[e.target.dataset.number].read = 'Not yet';
+                // makes the 'card container' blank and then displays (when called) it again, updating it
+                cards.textContent = ' ';
+                display();
+            } else {
+                myLibrary[e.target.dataset.number].read = 'Read';
+                cards.textContent = ' ';
+                display();
+            }
+        })
+
         button.addEventListener('click', (e) => {
             myLibrary.splice(e.target.dataset.number, 1);
-            // makes the 'card container' blank and then displays it again, updating it
             cards.textContent = ' ';
             display();  
         })
@@ -79,7 +106,7 @@ function display() {
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(pages);
-        card.appendChild(read);
+        card.appendChild(readed);
         card.appendChild(button)
 
         cards.appendChild(card);
@@ -89,13 +116,5 @@ function display() {
 
 display();
 
-// problem: only one remove button works, after that, the other stop working
-
-/*document.querySelectorAll('.remove').forEach(element => element.addEventListener('click', (e) => {
-    myLibrary.splice(e.target.dataset.number, 1);
-    // makes the 'card container' blank and then displays it again, updating it
-    cards.textContent = ' ';
-    display();  
-}))*/
 
 

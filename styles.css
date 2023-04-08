@@ -1,5 +1,5 @@
 :root {
-
+    --primary-color: rgb(82, 36, 127);
 }
 
 * {
@@ -14,6 +14,21 @@ body {
     position: relative;
 }
 
+/*
+ * ----------------------------- header --------------------------
+ */
+
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr .3fr;
+    border: 2px red solid;
+}
+
+
+ /*
+ * ----------------------------- content --------------------------
+ */
 form {
     border: 2px solid green;
     position: absolute;
@@ -30,5 +45,16 @@ form {
     border: 2px solid red;
     width: 250px;
     height: 200px;
+}
+
+/*
+ *  Styling for "Read" buttons
+ */
+.green {
+    background-color: rgb(8, 188, 8);
+}
+
+.red {
+    background-color: rgb(241, 114, 114);
 }
 
