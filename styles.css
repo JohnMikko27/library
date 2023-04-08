@@ -1,5 +1,10 @@
 :root {
   --primary-color: rgb(82, 36, 127);
+  --green: rgb(117, 249, 117);
+  --green-hover: rgb(73, 198, 73);
+  --red: rgb(248, 140, 140);
+  --red-hover: rgb(204, 99, 99);
+  box-sizing: border-box;
 }
 
 * {
@@ -13,6 +18,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
+
 }
 
 /*
@@ -29,7 +35,10 @@ body {
   color: white;
   padding: 0px 1rem 0px 0px;
   font-size: 1rem;
-  box-shadow: 1px 2px 8px 1px #606060;
+}
+
+.header h1:hover {
+    cursor: pointer;
 }
 
 .header h1,
@@ -44,9 +53,102 @@ body {
   gap: 1.5rem;
 }
 
+.header a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 /*
  * ----------------------------- content --------------------------
  */
+
+.content {
+    padding: 2rem 6rem 0rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #f0eef1;
+    box-shadow: inset rgba(0, 0, 0, 0.16) 0px 3px 4px;
+    
+}
+
+.add {
+    padding: .5rem;
+    margin-bottom: 2rem;
+    justify-self: center;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    color: var(--primary-color);
+    border: 2px var(--primary-color) solid;
+    border-radius: 10px;
+    font-size: 1.75rem;
+}
+
+.add:hover {
+    background-color: rgb(210, 210, 210);
+    cursor: pointer;
+}
+
+.cards {
+    padding: 1rem;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.card {
+    background-color: white;
+    padding: 1.5rem;
+    border: 2px solid black;
+    border-radius: 8px;
+    height: 275px;
+    display: grid;
+    gap: 1.5rem;
+    justify-items: center;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+  
+  /*
+   *  Styling for "Read"/"Not yet" buttons
+   */
+
+.green, 
+.red, 
+.card button:last-child {
+    font-size: inherit;
+    border-radius: 6px;
+    width: 20rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.green {
+    background-color: var(--green);
+    border: 2px solid var(--green);
+}
+
+.green:hover {
+    background-color: var(--green-hover);
+    border: 2px solid var(--green-hover);
+}
+  
+.red {
+    background-color: var(--red);
+    border: 2px solid var(--red);
+}
+
+.red:hover {
+    background-color: var(--red-hover);
+    border: 2px solid var(--red-hover);
+
+}
+  
+
+/*
+ * ----------------------------- form --------------------------
+ */
+
 form {
   border: 2px solid green;
   position: absolute;
@@ -58,19 +160,4 @@ form {
   display: none;
 }
 
-.card {
-  border: 2px solid red;
-  width: 250px;
-  height: 200px;
-}
 
-/*
- *  Styling for "Read" buttons
- */
-.green {
-  background-color: rgb(8, 188, 8);
-}
-
-.red {
-  background-color: rgb(241, 114, 114);
-}

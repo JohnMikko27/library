@@ -5,6 +5,7 @@ const addBookButton = document.querySelector('.add');
 const submit = document.querySelector('.submit')
 const form = document.querySelector('form');
 const cards = document.querySelector('.cards');
+const content = document.querySelector('.content');
 
 addBookButton.addEventListener('click', () => {
     form.classList.toggle('hidden');
@@ -20,7 +21,7 @@ submit.addEventListener('click', (e) => {
     if (read.checked) {
         read = 'Read';
     } else {
-        read = "Not yet"
+        read = "Not read"
     }
     
     let newBook = new Book(title, author, pages, read);
@@ -46,9 +47,9 @@ function addBookToLibrary(Book) {
     myLibrary.push(Book);
 }
 
-let book1 = new Book("1", "2", "3", "Not Yet");
-let book2 = new Book("asdf", "adsf", "asfd", "Read");
-let book3 = new Book('3', '3', '3', 'Read');
+let book1 = new Book("The Godfather", "Mario Puzo", 300, "Read");
+let book2 = new Book("The Hobbit", "Somebody", 400, "Read");
+let book3 = new Book("American Psycho", "Somebody2", 200, "Not read");
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
@@ -65,9 +66,9 @@ function display() {
         
         title.textContent = myLibrary[i].title;
         author.textContent = myLibrary[i].author;
-        pages.textContent = myLibrary[i].pages;
+        pages.textContent = `${myLibrary[i].pages} pages`;
         readed.textContent = myLibrary[i].read;
-        button.textContent = 'X';
+        button.textContent = 'Remove';
 
 
         if (myLibrary[i].read == 'Read') {
@@ -86,7 +87,7 @@ function display() {
         // fixes issue of button only working once
         readed.addEventListener('click', (e) => {
             if (e.target.textContent == 'Read') {
-                myLibrary[e.target.dataset.number].read = 'Not yet';
+                myLibrary[e.target.dataset.number].read = 'Not read';
                 // makes the 'card container' blank and then displays (when called) it again, updating it
                 cards.textContent = ' ';
                 display();
@@ -109,8 +110,9 @@ function display() {
         card.appendChild(readed);
         card.appendChild(button)
 
+
         cards.appendChild(card);
-        body.appendChild(cards);
+        content.appendChild(cards);
     }
 }
 
