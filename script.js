@@ -6,14 +6,15 @@ const submit = document.querySelector('.submit')
 const form = document.querySelector('form');
 const cards = document.querySelector('.cards');
 const content = document.querySelector('.content');
+const overlay = document.querySelector('.overlay');
 
 addBookButton.addEventListener('click', () => {
     form.classList.toggle('hidden');
+    overlay.classList.toggle('active');
 });
 
 submit.addEventListener('click', (e) => {
     e.preventDefault();
-
     let title = document.querySelector('#title').value;
     let author = document.querySelector('#author').value;
     let pages = document.querySelector('#pages').value;
@@ -32,6 +33,7 @@ submit.addEventListener('click', (e) => {
     display();
 
     form.classList.toggle('hidden');
+    overlay.classList.toggle('active');
     form.reset();
 });
 

@@ -18,7 +18,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-
+  background-color: #f0eef1;
 }
 
 /*
@@ -37,8 +37,12 @@ body {
   font-size: 1rem;
 }
 
+.header h1 {
+  font-size: 2.5rem;
+}
+
 .header h1:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .header h1,
@@ -54,8 +58,8 @@ body {
 }
 
 .header a:hover {
-    text-decoration: underline;
-    cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /*
@@ -63,101 +67,183 @@ body {
  */
 
 .content {
-    padding: 2rem 6rem 0rem 6rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    background-color: #f0eef1;
-    box-shadow: inset rgba(0, 0, 0, 0.16) 0px 3px 4px;
-    
+  padding: 2rem 6rem 0rem 6rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: #f0eef1;
+  box-shadow: inset rgba(0, 0, 0, 0.16) 0px 3px 4px;
 }
 
 .add {
-    padding: .5rem;
-    margin-bottom: 2rem;
-    justify-self: center;
-    font-weight: bold;
-    background-color: rgb(255, 255, 255);
-    color: var(--primary-color);
-    border: 2px var(--primary-color) solid;
-    border-radius: 10px;
-    font-size: 1.75rem;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  justify-self: center;
+  font-weight: bold;
+  background-color: rgb(255, 255, 255);
+  color: var(--primary-color);
+  border: 2px var(--primary-color) solid;
+  border-radius: 10px;
+  font-size: 1.75rem;
 }
 
 .add:hover {
-    background-color: rgb(210, 210, 210);
-    cursor: pointer;
+  background-color: rgb(210, 210, 210);
+  cursor: pointer;
 }
 
 .cards {
-    padding: 1rem;
-    height: fit-content;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
 }
 
 .card {
-    background-color: white;
-    padding: 1.5rem;
-    border: 2px solid black;
-    border-radius: 8px;
-    height: 275px;
-    display: grid;
-    gap: 1.5rem;
-    justify-items: center;
-    align-items: center;
-    font-size: 1.5rem;
-  }
-  
-  /*
-   *  Styling for "Read"/"Not yet" buttons
-   */
+  background-color: white;
+  padding: 1.5rem;
+  border: 2px solid black;
+  border-radius: 8px;
+  height: 275px;
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
 
-.green, 
-.red, 
+/*
+ *  Styling for "Read"/"Not yet"/"Remove" buttons
+ */
+.green,
+.red,
 .card button:last-child {
-    font-size: inherit;
-    border-radius: 6px;
-    width: 20rem;
-    height: 3rem;
-    cursor: pointer;
+  font-size: inherit;
+  border-radius: 6px;
+  width: 20rem;
+  height: 3rem;
+  cursor: pointer;
 }
 
 .green {
-    background-color: var(--green);
-    border: 2px solid var(--green);
+  background-color: var(--green);
+  border: 2px solid var(--green);
 }
 
 .green:hover {
-    background-color: var(--green-hover);
-    border: 2px solid var(--green-hover);
+  background-color: var(--green-hover);
+  border: 2px solid var(--green-hover);
 }
-  
+
 .red {
-    background-color: var(--red);
-    border: 2px solid var(--red);
+  background-color: var(--red);
+  border: 2px solid var(--red);
 }
 
 .red:hover {
-    background-color: var(--red-hover);
-    border: 2px solid var(--red-hover);
-
+  background-color: var(--red-hover);
+  border: 2px solid var(--red-hover);
 }
-  
+
+.card button:last-child {
+  border: 2px solid rgb(235, 235, 235);
+}
+
+.card button:last-child:hover {
+  background-color: rgb(188, 188, 188);
+  border: 2px solid rgb(188, 188, 188);
+}
 
 /*
  * ----------------------------- form --------------------------
  */
 
 form {
-  border: 2px solid green;
+  z-index: 1;
+  border: 2px solid rgb(199, 199, 199);
+  border-radius: 7px;
   position: absolute;
-  top: 40%;
-  right: 40%;
+  top: 15%;
+  left: 36%;
+  height: 500px;
+  width: 400px;
+  background-color: rgb(199, 199, 199);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  font-size: 1.25rem;
+  padding-bottom: 1.5rem;
+}
+
+form > h3 {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 20rem;
+  height: 2.5rem;
+  border: 2px solid white;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 0 .5rem 0 .5rem;
+}
+
+form > div:last-of-type {
+    display: flex;
+    align-items: center;
+}
+
+label[for="read"] {
+    padding-top: .5rem;
+    display: inline;
+    font-size: 1.3rem;
+}
+
+
+input[type="checkbox"] {
+   width: 35px;
+   height: 25px;
+  
+}
+
+.submit {
+    width: 80%;
+    height: 40px;
+    background-color: var(--green);
+    border: 2px solid var(--green);
+    border-radius: 7px;
+    font-size: inherit;
+}
+
+.submit:hover {
+    background-color: var(--green-hover);
+    border: 2px solid var(--green-hover);
+    cursor: pointer;
 }
 
 .hidden {
   display: none;
 }
 
+.overlay {
+    display: none;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.387);
+    width: 100%;
+    height: 100%;
+}
 
+.active {
+    display: block;
+}
