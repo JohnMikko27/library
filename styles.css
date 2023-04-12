@@ -211,22 +211,28 @@ label[for="read"] {
 input[type="checkbox"] {
    width: 35px;
    height: 25px;
-  
 }
 
 .submit {
-    width: 80%;
-    height: 40px;
-    background-color: var(--green);
-    border: 2px solid var(--green);
-    border-radius: 7px;
-    font-size: inherit;
+  width: 80%;
+  height: 40px;
+  background-color: var(--green);
+  border: 2px solid var(--green);
+  border-radius: 7px;
+  font-size: inherit;
 }
 
 .submit:hover {
-    background-color: var(--green-hover);
-    border: 2px solid var(--green-hover);
-    cursor: pointer;
+  background-color: var(--green-hover);
+  border: 2px solid var(--green-hover);
+  cursor: pointer;
+}
+
+.error {
+  margin-top: .3rem;
+  font-size: 1rem;
+  color: red;
+  display: none;
 }
 
 .hidden {
@@ -239,11 +245,16 @@ input[type="checkbox"] {
     left: 0;
     position: fixed;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.387);
+    background-color: rgba(0, 0, 0, 0.534);
     width: 100%;
     height: 100%;
 }
 
+/*
+ * Makes overlay visible
+ */
 .active {
     display: block;
 }
+
+

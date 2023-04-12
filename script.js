@@ -7,18 +7,24 @@ const form = document.querySelector('form');
 const cards = document.querySelector('.cards');
 const content = document.querySelector('.content');
 const overlay = document.querySelector('.overlay');
+const requiredInputs = document.querySelectorAll(':required');
+const errors = document.querySelectorAll('.error');
 
 addBookButton.addEventListener('click', () => {
     form.classList.toggle('hidden');
     overlay.classList.toggle('active');
+
+    form.addEventListener('')
 });
 
-submit.addEventListener('click', (e) => {
+form.addEventListener('submit', (e) => {
     e.preventDefault();
+
     let title = document.querySelector('#title').value;
     let author = document.querySelector('#author').value;
     let pages = document.querySelector('#pages').value;
     let read = document.querySelector('#read');
+        
     if (read.checked) {
         read = 'Read';
     } else {
@@ -35,8 +41,12 @@ submit.addEventListener('click', (e) => {
     form.classList.toggle('hidden');
     overlay.classList.toggle('active');
     form.reset();
+    errors.forEach(error => {
+        error.classList.remove('active');
+    })
+    
+    
 });
-
 
 function Book(title, author, pages, read) {
     this.title = title;
