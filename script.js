@@ -57,6 +57,7 @@ form.addEventListener('submit', (e) => {
 close.addEventListener('click', () => {
     form.classList.add('hidden');
     overlay.classList.remove('active');
+    form.reset();
 });
 
 function Book(title, author, pages, read) {
