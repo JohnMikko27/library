@@ -257,4 +257,18 @@ input[type="checkbox"] {
     display: block;
 }
 
+#close {
+  position: absolute;
+  top: 3%;
+  left: 90%;
+  background-color: inherit;
+  border: inherit;
+  cursor: pointer;
+  font-size: 1rem;
+}
 
+#close:hover {
+  background-color: grey;
+  border: 2px solid grey;
+  border-radius: 16px;
+}
