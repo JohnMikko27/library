@@ -1,4 +1,4 @@
-<h2>Hey</h2>
+<h1>Library Project from The Odin Project</h1>
 
 
 This is a Library project from The Odin Project curriculum where a user can add their own books and the books' information will be displayed on the screen in the form of a card.
