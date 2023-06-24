@@ -1,12 +1,17 @@
 let myLibrary = [];
 
+class Book {
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+}
+
 let book1 = new Book("The Godfather", "Mario Puzo", 300, "Read");
 let book2 = new Book("The Hobbit", "Somebody", 400, "Read");
-let book3 = new Book("American Psycho", "Somebody2", 200, "Not read");
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);  
+let book3 = new Book("American Psycho", "Somebody2", 200, "Not read"); 
 
 const body = document.querySelector('body');
 const addBookButton = document.querySelector('.add');
@@ -22,10 +27,6 @@ addBookButton.addEventListener('click', () => {
     form.classList.toggle('hidden');
     overlay.classList.toggle('active');
 });
-
-body.addEventListener('click', (e) => {
-    console.log('hi')
-})
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -51,7 +52,6 @@ form.addEventListener('submit', (e) => {
     form.classList.toggle('hidden');
     overlay.classList.toggle('active');
     form.reset();
-
 });
 
 close.addEventListener('click', () => {
@@ -60,14 +60,15 @@ close.addEventListener('click', () => {
     form.reset();
 });
 
-function Book(title, author, pages, read) {
+/*function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-}   
+}   */
 
-function addBookToLibrary(Book) {
+
+const addBookToLibrary = (Book) => {
     myLibrary.push(Book);
 }  
 
@@ -130,7 +131,7 @@ function display() {
     }
 }
 
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+addBookToLibrary(book3); 
 display();
-
-
-
